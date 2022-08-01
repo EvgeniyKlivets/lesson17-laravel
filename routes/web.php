@@ -1,7 +1,5 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +10,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
+Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin'])->group(function() {
+    Route::get('/dashboard', function () {
+        return view('dashboard', ['role' => 'Admin']);
+    })->name('dashboard');
+
+    Route::resource('products', \App\Http\Controllers\Admin\ProductsController::class)->except(['show']);
+});
+Route::get('/dashboard', function () {
+    return view('dashboard', ['role' => 'Customer']);
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
