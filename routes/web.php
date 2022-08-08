@@ -1,4 +1,5 @@
 <?php
+use App\Services\ImagesService;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
