@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::delete(
+    'ajax/images/{image}',
+    \App\Http\Controllers\Ajax\RemoveImageController::class
+)->middleware(['auth', 'admin'])->name('ajax.images.delete');
+
 Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin'])->group(function() {
     Route::get('/dashboard', function () {
         return view('dashboard', ['role' => 'Admin']);
