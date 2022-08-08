@@ -137,20 +137,20 @@
                             </div>
                         </div>
                     </div>
-{{--                    <div class="form-group row">--}}
-{{--                        <label for="images" class="col-md-4 col-form-label text-md-right">{{ __('Images') }}</label>--}}
-{{--                        <div class="col-md-6">--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="col-md-12">--}}
-{{--                                    <div class="row images-wrapper"></div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-md-12">--}}
-{{--                                    <input type="file" name="images[]" onChange="readMultiFiles" id="images" multiple>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
+ <div class ="form-group row">
+                     <label for="images" class="col-md-4 col-form-label text-md-right">
+                         {{__('Images')}}}</label>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                         <div class="row images-wrapper"></div>
+                                            </div>
+                                                <div class="col-md-12"><input type="file" name="image[]"
+                                                     id="images" multiple>
+                                                        </div>
+                                                            </div>
+                                                                </div>
+                                                                    </div>
                     <div class="form-group row">
                         <div class="col-md-10 text-right">
                             <input type="submit" class="btn btn-info" value="Create">
@@ -161,6 +161,7 @@
         </div>
     </div>
 @endsection
-{{--@push('scripts')--}}
-{{--    <script src="{{ asset('js/images-preview.js') }}" type="text/javascript"></script>--}}
-{{--@endpush--}}
+@push('footer-scripts')
+    @vite(['resources/js/images-preview.js'])
+@endpush
+
